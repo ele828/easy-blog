@@ -11,12 +11,12 @@ var postSchema = new mongoose.Schema({
 
 postSchema.statics.findOneByUrl = function(url) {
 	return new Promise(function(resolve, reject) {
-						this.findOne({'url' : url})
-							.exec(function(err, post) {
-								if(err) reject();
-								resolve(post);
-							});
-					}.bind(this));
+			this.findOne({'url' : url})
+				.exec(function(err, post) {
+					if(err) reject();
+					resolve(post);
+				});
+		}.bind(this));
 }
 
 postSchema.statics.findAll = function() {
