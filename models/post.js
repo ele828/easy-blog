@@ -27,7 +27,7 @@ postSchema.statics.findAll = function() {
 	 				if(err) reject();
 					resolve(posts);
 	 			});
-	  }.bind(this));
+		}.bind(this));
 }
 
 postSchema.statics.createOne = function(post) {
