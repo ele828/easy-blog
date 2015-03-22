@@ -21,23 +21,23 @@ postSchema.statics.findOneByUrl = function(url) {
 
 postSchema.statics.findAll = function() {
  	return new Promise(function(resolve, reject) {
- 		this.find({},{title: 1, date: 1, url: 1, _id: 0})
- 			.sort({"_id": -1})
- 			.exec(function(err, posts) {
- 				if(err) reject();
-				resolve(posts);
- 			});
-  }.bind(this));
+	 		this.find({},{title: 1, date: 1, url: 1, _id: 0})
+	 			.sort({"_id": -1})
+	 			.exec(function(err, posts) {
+	 				if(err) reject();
+					resolve(posts);
+	 			});
+	  }.bind(this));
 }
 
 postSchema.statics.createOne = function(post) {
 	return new Promise(function(resolve, reject) {
-		this.create(post)
-			.exec(function(err, doc) {
-				if(err) reject();
-				resolve(doc);
-			});
-	}.bind(this));
+			this.create(post)
+				.exec(function(err, doc) {
+					if(err) reject();
+					resolve(doc);
+				});
+		}.bind(this));
 }
 
 var PostModel = mongoose.model('Post', postSchema);
