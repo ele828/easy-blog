@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var formatDate = require('format-date');
 
 var postSchema = new mongoose.Schema({
 	title:      { type: String },
@@ -14,6 +15,10 @@ postSchema.statics.findOneByUrl = function(url) {
 			this.findOne({'url' : url})
 				.exec(function(err, post) {
 					if(err) reject();
+					Object.defineProperty(post, 'date' ,{
+						writable: true
+					});
+					post.date = formatDate('{year}-{month}-{day}', post.date);
 					resolve(post);
 				});
 		}.bind(this));
@@ -25,6 +30,12 @@ postSchema.statics.findAll = function() {
 	 			.sort({"_id": -1})
 	 			.exec(function(err, posts) {
 	 				if(err) reject();
+	 				for(var i=0; i<posts.length; i++) {
+	 					Object.defineProperty(posts[i], 'date' ,{
+							writable: true
+						});
+						posts[i].date = formatDate('{year}-{month}-{day}', posts[i].date);
+	 				}
 					resolve(posts);
 	 			});
 		}.bind(this));
@@ -33,9 +44,9 @@ postSchema.statics.findAll = function() {
 postSchema.statics.createOne = function(post) {
 	return new Promise(function(resolve, reject) {
 			this.create(post)
-				.exec(function(err, doc) {
+				.exec(function(err, post) {
 					if(err) reject();
-					resolve(doc);
+					resolve(post);
 				});
 		}.bind(this));
 }
