@@ -12,10 +12,20 @@ module.exports = function(req, res, next) {
 	// 	console.log(docs);
 	// })
 
-	post.findAll(function(err, posts) {
-		res.render('blog', {
-			config: config,
-			posts: posts
-		})
-	});
+	// post.createOne({
+	// 	title: 'Promise生成的博文111',
+	// 	contents: "就是测试一下效果而已啦222",
+	// 	url: 'just-play-demo-2'
+	// }).then(function(post) {
+	// 	console.log(post)
+	// });
+
+	post.findAll()
+		.then(function(posts) {
+			res.render('blog', {
+				config: config,
+				posts: posts
+			})
+		});
+
 }
