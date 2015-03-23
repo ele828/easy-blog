@@ -13,6 +13,7 @@
 <body>
 <ul>
 	<% posts.forEach(function(post) {%>
+		<%=post.category_name%>
 		<a href="/post/<%=post.url%>/"><li><%=post.date%> — <%=post.title%></li></a>
 	<% }); %>
 </ul>
