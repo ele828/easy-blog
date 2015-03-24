@@ -36,18 +36,18 @@ module.exports = function(req, res, next) {
 		.then(function(posts) {
 			var deferred = Promise.defer();
 			Promise.all(posts.map(function(post) {
-						var defer = Promise.defer();
-				  		category_id = post.category;
-						category.findById(category_id)
-								.then(function(c) {
-									if(c == null) defer.resolve(post);
-									post.category_name = c.name;
-									defer.resolve(post);
-								}.bind(this));
-								return defer.promise;
-			  		})).then(function(posts) {
-						deferred.resolve(posts);
-					});
+				var defer = Promise.defer();
+				category_id = post.category;
+				category.findById(category_id)
+					.then(function(c) {
+						if (c == null) defer.resolve(post);
+						post.category_name = c.name;
+						defer.resolve(post);
+					}.bind(this));
+				return defer.promise;
+			})).then(function(posts) {
+				deferred.resolve(posts);
+			});
 			return deferred.promise;
 		}).then(function(posts) {
 			res.render('blog', {
