@@ -34,24 +34,21 @@ module.exports = function(req, res, next) {
 	post.findAll()
 		// find it belongs to which category
 		.then(function(posts) {
-			for(var i = 0; i < posts.length; i++) {
-				category_id = posts[i].category;
-				category.findById(category_id)
-						.then(function(c) {
-							// this.posts[i].category_name = c.name;
-							posts[0].category_name = 'test';
-							// Object.defineProperty(posts[0], 'category_name', {
-							// 	value: 'hahaha'
-							// })
-							console.log(posts[i].date)
-						}.bind(this));
-			}
-			for(var i = 0; i<posts.length; i++) {
-				console.log(posts[i].date)
-			}
-			//posts[0].category_name = 'test';
-			console.log(posts[0])
-			return posts;
+			var deferred = Promise.defer();
+			Promise.all(posts.map(function(post) {
+						var defer = Promise.defer();
+				  		category_id = post.category;
+						category.findById(category_id)
+								.then(function(c) {
+									if(c == null) defer.resolve(post);
+									post.category_name = c.name;
+									defer.resolve(post);
+								}.bind(this));
+								return defer.promise;
+			  		})).then(function(posts) {
+						deferred.resolve(posts);
+					});
+			return deferred.promise;
 		}).then(function(posts) {
 			res.render('blog', {
 				config: config,

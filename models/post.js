@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var formatDate = require('format-date');
+var tools = require('../common/tools.js');
 
 var Schema = mongoose.Schema;
 var PostSchema = new Schema({
@@ -21,7 +21,7 @@ PostSchema.statics.findOneByUrl = function(url) {
 					Object.defineProperty(post, 'date' ,{
 						writable: true
 					});
-					post.date = formatDate('{year}-{month}-{day}', post.date);
+					// post.date = formatDate('{year}-{month}-{day}', post.date);
 					resolve(post);
 				});
 		}.bind(this));
@@ -36,14 +36,11 @@ PostSchema.statics.findAll = function() {
 	 					  keywords: 1, 
 	 					  _id: 0})
 	 			.sort({"_id": -1})
+	 			.lean()
 	 			.exec(function(err, posts) {
 	 				if(err) reject(err);
 	 				for(var i=0; i<posts.length; i++) {
-	 				// 	Object.defineProperty(posts[i], 'date' ,{
-						// 	writable: true
-						// });
-						// posts[i].date = formatDate('{year}-{month}-{day}', posts[i].date);
-						console.log(new Date(posts[i].date.toString()));
+						posts[i].date = tools.formatDate(posts[i].date);
 	 				}
 					resolve(posts);
 	 			});
