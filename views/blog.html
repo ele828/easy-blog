@@ -13,8 +13,7 @@
 <body>
 <ul>
 	<% posts.forEach(function(post) {%>
-		<%=post.category_name%>
-		<a href="/post/<%=post.url%>/"><li><%=post.date%> — <%=post.title%></li></a>
+<a href="/post/<%=post.url%>/"><li>[<%=post.category.name%>]<%=post.title%> (<%=post.date%>)</li></a>
 	<% }); %>
 </ul>
 	

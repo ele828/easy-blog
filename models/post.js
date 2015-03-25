@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var PostSchema = new Schema({
 	title:      { type: String },
 	contents:   { type: String },
-	category:   { type: Schema.Types.ObjectId },
+	category:   { type: Schema.Types.ObjectId, ref: 'Category' },
 	keywords:   { type: String, default: '' },
 	date:       { type: Date,   default: Date.now },
 	views:      { type: Number, default: 0 },
@@ -16,12 +16,12 @@ var PostSchema = new Schema({
 PostSchema.statics.findOneByUrl = function(url) {
 	return new Promise(function(resolve, reject) {
 			this.findOne({'url' : url})
+				.lean()
+				.populate('category')
 				.exec(function(err, post) {
-					if(err) reject(err);
-					Object.defineProperty(post, 'date' ,{
-						writable: true
-					});
-					// post.date = formatDate('{year}-{month}-{day}', post.date);
+					if(err)
+						reject(err);
+					post.date = tools.formatDate(post.date);
 					resolve(post);
 				});
 		}.bind(this));
@@ -37,8 +37,10 @@ PostSchema.statics.findAll = function() {
 	 					  _id: 0})
 	 			.sort({"_id": -1})
 	 			.lean()
+	 			.populate('category')
 	 			.exec(function(err, posts) {
-	 				if(err) reject(err);
+	 				if(err)
+	 					reject(err);
 	 				for(var i=0; i<posts.length; i++) {
 						posts[i].date = tools.formatDate(posts[i].date);
 	 				}
@@ -51,7 +53,8 @@ PostSchema.statics.createOne = function(post) {
 	return new Promise(function(resolve, reject) {
 			this.create(post)
 				.exec(function(err, post) {
-					if(err) reject(err);
+					if(err)
+						reject(err);
 					resolve(post);
 				});
 		}.bind(this));

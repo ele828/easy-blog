@@ -17,35 +17,34 @@ module.exports = function(req, res, next) {
 	// 	title: '分类测试',
 	// 	contents: "就是测试一下效果而已啦222",
 	// 	url: 'test-categories',
-	// 	category: '550f7abf36daf2afd83ad4f4',
+	// 	category: '55117f868f470222e4978de9',
 	// 	keywords: '测试'
 	// }).then(function(post) {
 	// 	console.log(post)
 	// });
 
 	// category.createOne({
-	// 	name: '前端开发',
-	// 	url:  'front-end-dev'
+	// 	name: 'iOS开发',
+	// 	url:  'ios-dev'
 	// }).then(function(c) {
 	// 	console.log(c);
 	// })
 
 
 	post.findAll()
-		// Find it belongs to which category
-		.then(searchCategoryName)
-		// Render pages
-		.then(function(posts) {
-			res.render('blog', {
-				config: config,
-				posts: posts
-			})
-		});
+	.then(function(posts) {
+		console.log(posts);
+		res.render('blog', {
+			config: config,
+			posts: posts
+		})
+	});
 
 
 
 }
 
+/* Replace by populate method
 function searchCategoryName(posts) {
 	var deferred = Promise.defer();
 	Promise.all(posts.map(function(post) {
@@ -63,3 +62,4 @@ function searchCategoryName(posts) {
 	});
 	return deferred.promise;
 }
+*/
