@@ -11,9 +11,11 @@
     "debug": "~2.1.1",
     "ejs": "~2.3.1",
     "express": "~4.12.2",
+    "express-session": "*",
     "morgan": "~1.5.1",
     "serve-favicon": "~2.2.0",
     "mongoose": "*",
-    "moment ": "*"
+    "moment ": "*",
+    "markdown": "*"
   }
 }

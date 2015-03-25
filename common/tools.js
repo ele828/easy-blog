@@ -1,4 +1,6 @@
 var moment = require('moment');
+var markdown = require( "markdown" ).markdown;
+
 moment.locale('zh-cn'); // 使用中文
 
 // 格式化时间
@@ -12,3 +14,7 @@ exports.formatDate = function (date, friendly) {
   }
 
 };
+
+exports.markdownParser = function(md) {
+	return markdown.toHTML(md);
+}

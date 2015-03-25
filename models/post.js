@@ -59,7 +59,7 @@ PostSchema.statics.findAll = function() {
 				url: 1,
 				category: 1,
 				keywords: 1,
-				_id: 0
+				_id: 1
 			})
 			.sort({
 				"_id": -1
@@ -80,6 +80,16 @@ PostSchema.statics.findAll = function() {
 PostSchema.statics.createOne = function(post) {
 	return new Promise(function(resolve, reject) {
 		this.create(post, function(err, p) {
+			if (err)
+				reject(err)
+			resolve(p);
+		});
+	}.bind(this));
+}
+
+PostSchema.statics.removeById = function(id) {
+	return new Promise(function(resolve, reject) {
+		this.remove({_id: id}, function(err, p) {
 			if (err)
 				reject(err)
 			resolve(p);

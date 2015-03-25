@@ -4,11 +4,12 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="author" content="Eric_Wong">
-    <meta name="description" content="记录生活、技术">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="记录生活、技术">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:site_name" content="黄为伟的博客"/>
+	<meta name="keywords" content="<%=post.keywords%>" />
 	<title><%=post.title%> - <%=config.site_name%></title>
-  	<link href="/favicon.ico" rel="icon">
+	<link href="/favicon.ico" rel="icon">
 </head>
 <body>
 <h1>
@@ -18,7 +19,7 @@
 <span>关键字：<%=post.keywords%></span>
 <p>
 	<%=post.date%><br>
-	<%=post.contents%>
 </p>
+	<%- post.contents %>
 </body>
 </html>

@@ -7,16 +7,14 @@
     <meta name="description" content="记录生活、技术">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:site_name" content="黄为伟的博客"/>
-	<title>管理登录 - <%=config.site_name%></title>
+	<title>查看博文 - <%=config.site_name%></title>
   	<link href="/favicon.ico" rel="icon">
 </head>
 <body>
-<form method="POST" action="/admin/login">
-	<label for="username">用户名</label>
-	<input type="text" name="username"/>
-	<label for="password">密码</label>
-	<input type="password" name="password"/>
-	<input type="submit"/>
-</form>
+<ul>
+<%posts.forEach(function(post) {%>
+<li><%=post.title%><a href="/admin/post/remove/<%=post._id%>">X</a></li>
+<%});%>
+</ul>
 </body>
 </html>
