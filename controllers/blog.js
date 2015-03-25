@@ -3,7 +3,7 @@ var post = require('../models/post');
 var category = require('../models/category');
 
 /* blog list controller */
-module.exports = function(req, res, next) {
+exports.index = function(req, res, next) {
 
 	// post.createOne({
 	// 	title: '这个一篇文章啊真的',
@@ -16,11 +16,11 @@ module.exports = function(req, res, next) {
 	// post.createOne({
 	// 	title: '分类测试',
 	// 	contents: "就是测试一下效果而已啦222",
-	// 	url: 'test-categories',
+	// 	url: 'test-categories13',
 	// 	category: '55117f868f470222e4978de9',
 	// 	keywords: '测试'
-	// }).then(function(post) {
-	// 	console.log(post)
+	// }).then(function(p) {
+	// 	console.log(p)
 	// });
 
 	// category.createOne({

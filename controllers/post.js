@@ -1,7 +1,7 @@
 var config = require('../config');
 var post = require('../models/post');
 
-module.exports = function(req, res, next) {
+exports.index = function(req, res, next) {
 	var url = req.params.url;
 	
 	post.findOneByUrl(url)

@@ -6,11 +6,11 @@ var PostSchema = new Schema({
 	title:      { type: String },
 	contents:   { type: String },
 	category:   { type: Schema.Types.ObjectId, ref: 'Category' },
+	url:        { type: String, unique: true },
 	keywords:   { type: String, default: '' },
 	date:       { type: Date,   default: Date.now },
 	views:      { type: Number, default: 0 },
 	stars:      { type: Number, default: 0 },
-	url:        { type: String, unique: true }
 });
 
 PostSchema.statics.findOneByUrl = function(url) {
@@ -51,12 +51,18 @@ PostSchema.statics.findAll = function() {
 
 PostSchema.statics.createOne = function(post) {
 	return new Promise(function(resolve, reject) {
-			this.create(post)
-				.exec(function(err, post) {
-					if(err)
-						reject(err);
-					resolve(post);
-				});
+			// this.create(post)
+			// 	.exec(function(err, n) {
+			// 		if(err)
+			// 			reject(err);
+			// 		console.log('callback');
+			// 		resolve(p);
+			// 	});
+			this.create(post, function(err, p) {
+				if(err)
+					reject(err)
+				resolve(p);
+			});
 		}.bind(this));
 }
 
