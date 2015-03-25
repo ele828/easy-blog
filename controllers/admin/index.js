@@ -11,8 +11,8 @@ exports.login = function(req, res, next) {
 	var username = req.body.username;
 	var password = req.body.password;
 
-	if(username === config.admin.username &&
-	   password === config.admin.password) {
+	if (username === config.admin.username &&
+		password === config.admin.password) {
 		res.redirect('/admin/create-post');
 	} else {
 		res.redirect('/admin');
@@ -44,7 +44,7 @@ exports.createPost = function(req, res, next) {
 		console.log('message');
 		res.redirect('/blog');
 	}).catch(function(err) {
-		if(err) {
+		if (err) {
 			res.redirect('/admin/create-post/');
 		}
 	});
