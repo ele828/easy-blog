@@ -9,14 +9,78 @@
 	<meta property="og:site_name" content="黄为伟的博客"/>
 	<title>管理登录 - <%=config.site_name%></title>
   	<link href="/favicon.ico" rel="icon">
+  	<link rel="stylesheet" href="/styles/bootstrap.min.css">
+  	<style>
+  	body {
+	  padding-top: 40px;
+	  padding-bottom: 40px;
+	  background-color: #eee;
+	}
+
+	.form-signin {
+	  max-width: 330px;
+	  padding: 15px;
+	  margin: 0 auto;
+	}
+	.form-signin .form-signin-heading,
+	.form-signin .checkbox {
+	  margin-bottom: 10px;
+	}
+	.form-signin .checkbox {
+	  font-weight: normal;
+	}
+	.form-signin .form-control {
+	  position: relative;
+	  height: auto;
+	  -webkit-box-sizing: border-box;
+	     -moz-box-sizing: border-box;
+	          box-sizing: border-box;
+	  padding: 10px;
+	  font-size: 16px;
+	}
+	.form-signin .form-control:focus {
+	  z-index: 2;
+	}
+	.form-signin input[type="email"] {
+	  margin-bottom: -1px;
+	  border-bottom-right-radius: 0;
+	  border-bottom-left-radius: 0;
+	}
+	.form-signin input[type="password"] {
+	  margin-bottom: 10px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+	}
+
+	.slogon {
+		margin-right:20px;
+		margin-bottom: 20px;
+	}
+
+	.form-signin {
+		margin-top: 100px;
+	}
+</style>
 </head>
 <body>
-<form method="POST" action="/admin/login">
+<div class="container">
+
+      <form method="POST" class="form-signin" action="/admin/login">
+        <h2 class="form-signin-heading slogon text-center">管理登录</h2>
+        <input type="text" class="form-control" name="username" placeholder="请输入用户名" required autofocus>
+        <input type="password" class="form-control" name="password" placeholder="请输入密码" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+      </form>
+
+    </div>
+
+<!-- <form method="POST" action="/admin/login">
 	<label for="username">用户名</label>
 	<input type="text" name="username"/>
 	<label for="password">密码</label>
 	<input type="password" name="password"/>
 	<input type="submit"/>
-</form>
+</form> -->
+<script src="/scripts/bootstrap.min.js"></script>
 </body>
 </html>

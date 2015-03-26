@@ -10,7 +10,9 @@
 	<meta name="keywords" content="<%=post.keywords%>" />
 	<title><%=post.title%> - <%=config.site_name%></title>
 	<link href="/favicon.ico" rel="icon">
-	<link rel="stylesheet" href="/styles/air.css">
+	<link rel="stylesheet" href="/styles/markdown.css">
+	<link rel="stylesheet" href="/libs/code-prettify/prettify.css">
+</style>
 </head>
 <body>
 <h1>
@@ -21,6 +23,16 @@
 <p>
 	<%=post.date%><br>
 </p>
+<article>
 	<%- post.contents %>
+</article>
 </body>
+<script src="/scripts/jquery-2.1.3.min.js"></script>
+<script src="/libs/code-prettify/prettify.js"></script>
+<script>
+(function(){
+    $('pre').addClass('prettyprint');
+    prettyPrint();
+})();
+</script>
 </html>
