@@ -28,8 +28,12 @@
 	</div>
 
 	<div>
-		<label for="keywords">所属目录</label>
-		<input type="text" name="category"/>
+		<label for="category">所属目录</label>
+		<select name="category">
+			<% categories.forEach(function(category){%>
+			<option value="<%=category._id%>"><%=category.name%></option>
+			<% }); %>
+		</select>
 	</div>
 
 	<div>

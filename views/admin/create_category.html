@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="author" content="Eric_Wong">
+    <meta name="description" content="记录生活、技术">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:site_name" content="黄为伟的博客"/>
+	<title>新增分类 - <%=config.site_name%></title>
+  	<link href="/favicon.ico" rel="icon">
+</head>
+<body>
+<form method="POST" action="/admin/category/create">
+	<div>
+		<label for="name">栏目名称</label>
+		<input type="text" name="name"/>
+	</div>
+	<div>
+		<label for="url">栏目地址</label>
+		<input type="text" name="url"/>
+	</div>
+	<input type="submit" value="新增栏目"/>
+</form>
+</body>
+</html>

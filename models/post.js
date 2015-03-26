@@ -97,4 +97,16 @@ PostSchema.statics.removeById = function(id) {
 	}.bind(this));
 }
 
+PostSchema.statics.findByCategoryId = function(cid) {
+	return new Promise(function(resolve, reject) {
+		this.find({'category': cid})
+			.lean()
+			.exec(function(err, post) {
+				if(err)
+					reject(err);
+				resolve(post);
+			});
+	}.bind(this));
+}
+
 module.exports = mongoose.model('Post', PostSchema);

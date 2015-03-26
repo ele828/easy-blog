@@ -14,11 +14,11 @@ var CategorySchema = new Schema({
 
 CategorySchema.statics.createOne = function(category) {
 	return new Promise(function(resolve, reject) {
-		this.create(category)
-			.exec(function(err, category) {
-				if (err) reject(err);
-				resolve(category);
-			});
+		this.create(category, function(err, c) {
+			if(err)
+				reject(err);
+			resolve(c);
+		});
 	}.bind(this));
 }
 
@@ -31,6 +31,31 @@ CategorySchema.statics.findById = function(id) {
 				if (err) reject(err);
 				resolve(category);
 			});
+	}.bind(this));
+}
+
+CategorySchema.statics.findAll = function() {
+	return new Promise(function(resolve, reject) {
+		this.find({})
+			.sort({
+				'_id': -1
+			})
+			.exec(function(err, categories) {
+				if(err)
+					reject(err);
+				resolve(categories);
+			});
+
+	}.bind(this));
+}
+
+CategorySchema.statics.removeById = function(id) {
+	return new Promise(function(resolve, reject) {
+		this.remove({_id: id}, function(err, c) {
+			if (err)
+				reject(err)
+			resolve(c);
+		});
 	}.bind(this));
 }
 

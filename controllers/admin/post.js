@@ -1,5 +1,6 @@
-var post = require('../../models/post');
 var config = require('../../config');
+var post = require('../../models/post');
+var category = require('../../models/category');
 
 // Show create page
 exports.showCreatePost = function(req, res, next) {
@@ -7,9 +8,16 @@ exports.showCreatePost = function(req, res, next) {
 		res.redirect('/admin');
 		return;
 	}
-	res.render('admin/create_post', {
-		config: config
-	})
+
+	// Fetch category data
+	category.findAll()
+			.then(function(categories) {
+				console.log(categories);
+				res.render('admin/create_post', {
+					config: config,
+					categories: categories
+				});
+			});
 }
 
 // Create a new post
@@ -28,10 +36,10 @@ exports.createPost = function(req, res, next) {
 		title: title,
 		contents: contents,
 		url: url,
-		category: '55117f868f470222e4978de9',
+		category: category,
 		keywords: keywords
 	}).then(function(p) {
-		console.log('message');
+		console.log(p);
 		res.redirect('/admin/post/view');
 	}).catch(function(err) {
 		if (err) {

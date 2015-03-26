@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="author" content="Eric_Wong">
+    <meta name="description" content="记录生活、技术">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:site_name" content="黄为伟的博客"/>
+	<title>查看栏目 - <%=config.site_name%></title>
+  	<link href="/favicon.ico" rel="icon">
+</head>
+<body>
+<ul>
+<%categories.forEach(function(category) {%>
+<li><%=category.name%><a href="/admin/category/remove/<%=category._id%>">X</a></li>
+<%});%>
+</ul>
+</body>
+</html>
