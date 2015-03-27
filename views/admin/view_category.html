@@ -36,7 +36,7 @@
                   <li><a href="/admin/category/create">新增分类</a></li>
                 </ul>
               </li>
-              <li><a href="logout">退出后台</a></li>
+              <li><a href="/admin/logout">退出后台</a></li>
             </ul>
           </div>
         </div>
@@ -51,6 +51,7 @@
 		      <thead>
 		        <tr>
 		          <th>分类名称</th>
+		          <th>分类地址</th>
 				  <th>删除</th>
 		          <th>修改</th>
 		        </tr>
@@ -59,8 +60,9 @@
 				<%categories.forEach(function(category) {%>
 			        <tr>
 			          <td><a href="/category/<%=category.url%>" target="_blank"><%=category.name%></a></td>
+			          <td><%=category.url%></td>
 			          <td><a href="/admin/category/remove/<%=category._id%>">删除</a></td>
-			          <td><a href="/admin/category/edit/<%=category._id%>">修改</a></td>
+			          <td><a href="/admin/category/alter/<%=category._id%>">修改</a></td>
 			        </tr>
 		        <%});%>
 		      </tbody>

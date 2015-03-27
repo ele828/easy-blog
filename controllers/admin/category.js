@@ -3,10 +3,6 @@ var category = require('../../models/category');
 var post = require('../../models/post');
 
 exports.viewCategory = function(req, res, next) {
-	if(!req.session.logined) {
-		res.redirect('/admin');
-		return;
-	}
 	category.findAll()
 			.then(function(categories) {
 				res.render('admin/view_category', {
@@ -17,11 +13,6 @@ exports.viewCategory = function(req, res, next) {
 }
 
 exports.showCreateCategory = function(req, res, next) {
-	if(!req.session.logined) {
-		res.redirect('/admin');
-		return;
-	}
-
 	res.render('admin/create_category', {
 		config: config
 	})
@@ -29,10 +20,6 @@ exports.showCreateCategory = function(req, res, next) {
 }
 
 exports.createCategory = function(req, res, next) {
-	if(!req.session.logined) {
-		res.redirect('/admin');
-		return;
-	}
 	var name = req.body.name;
 	var url  = req.body.url;
 
@@ -40,19 +27,39 @@ exports.createCategory = function(req, res, next) {
 		name: name,
 		url: url
 	}).then(function(c) {
-		res.json('success');
+		res.redirect('/admin/category/view');
 	}).catch(function(err) {
-		console.log(err);
 		if(err)
-			res.json('error');
+			res.redirect('/admin/category/view');
 	})
 }
 
+exports.showAlterCategory = function(req, res, next) {
+	// Fetch this category's info by its id
+	var id = req.params.id;
+	category.findById(id)
+			.then(function(cat) {
+				res.render('admin/alter_category', {
+					config: config,
+					category: cat
+				});
+			});
+}
+
+exports.alterCategory = function(req, res, next) {
+	var id = req.params.id;
+	var name = req.body.name;
+	var url = req.body.url;
+
+	category.updateById(id, {
+		name: name,
+		url: url
+	}).then(function(nums) {
+		res.redirect('/admin/category/view');
+	});
+}
+
 exports.removeCategory = function(req, res, next) {
-	if(!req.session.logined) {
-		res.redirect('/admin');
-		return;
-	}
 	var id = req.params.id;
 
 	// To search if this category contains posts

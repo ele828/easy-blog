@@ -51,6 +51,22 @@ PostSchema.statics.findOneByUrl = function(url) {
 	}.bind(this));
 }
 
+PostSchema.statics.findOneById = function(id) {
+	return new Promise(function(resolve, reject) {
+		this.findOne({
+				'_id': id
+			})
+			.lean()
+			.populate('category')
+			.exec(function(err, post) {
+				if (err)
+					reject(err);
+				post.date = tools.formatDate(post.date);
+				resolve(post);
+			});
+	}.bind(this));
+}
+
 PostSchema.statics.findAll = function() {
 	return new Promise(function(resolve, reject) {
 		this.find({}, {
@@ -78,6 +94,17 @@ PostSchema.statics.createOne = function(post) {
 			if (err)
 				reject(err)
 			resolve(p);
+		});
+	}.bind(this));
+}
+
+PostSchema.statics.updateById = function(id, props) {
+	return new Promise(function(resolve, reject) {
+		this.update({ _id: id }, { $set: props}).exec(function(err, numberAffected, raw) {
+			if(err) {
+				reject(err);
+			}
+			resolve(numberAffected);
 		});
 	}.bind(this));
 }

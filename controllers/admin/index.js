@@ -20,10 +20,6 @@ exports.login = function(req, res, next) {
 }
 
 exports.logout = function(req, res, next) {
-	if(!req.session.logined) {
-		res.redirect('/admin');
-		return;
-	}
 	if(req.session.logined) {
 		req.session.destroy(function() {
 			res.redirect('/blog');
@@ -32,10 +28,6 @@ exports.logout = function(req, res, next) {
 }
 
 exports.panel = function(req, res, next) {
-	if(!req.session.logined) {
-		res.redirect('/admin');
-		return;
-	}
 	res.render('admin/panel', {
 		config: config
 	})
