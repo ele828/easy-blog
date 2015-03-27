@@ -54,12 +54,7 @@ PostSchema.statics.findOneByUrl = function(url) {
 PostSchema.statics.findAll = function() {
 	return new Promise(function(resolve, reject) {
 		this.find({}, {
-				title: 1,
-				date: 1,
-				url: 1,
-				category: 1,
-				keywords: 1,
-				_id: 1
+				contents: 0
 			})
 			.sort({
 				"_id": -1

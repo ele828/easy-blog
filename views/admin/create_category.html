@@ -9,18 +9,69 @@
 	<meta property="og:site_name" content="黄为伟的博客"/>
 	<title>新增分类 - <%=config.site_name%></title>
   	<link href="/favicon.ico" rel="icon">
+  	<link rel="stylesheet" href="/styles/bootstrap.min.css">
 </head>
 <body>
-<form method="POST" action="/admin/category/create">
-	<div>
-		<label for="name">栏目名称</label>
-		<input type="text" name="name"/>
+<div class="container">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Easy Blog</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class=""><a href="/admin/panel">首页</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">文章管理 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="/admin/post/view">文章列表</a></li>
+                  <li><a href="/admin/post/create">发布文章</a></li>
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">分类管理 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="/admin/category/view">分类列表</a></li>
+                  <li><a href="/admin/category/create">新增分类</a></li>
+                </ul>
+              </li>
+              <li><a href="logout">退出后台</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+	
+	<div class="container" style="margin-top: 80px;">
+		<form method="POST" action="/admin/category/create">
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">新增分类</h3>
+		  </div>
+		  <div class="panel-body">
+		    <div class="form-group">
+			    <label for="title">分类名称</label>
+				<input type="text" name="name" class="form-control" style="width: 70%"/>
+			</div>
+			<div class="form-group">
+			    <label for="keywords">分类URL</label>
+				<input type="text" name="url" class="form-control" style="width: 70%"/>
+			</div>
+			
+			<div class="form-group">
+				<input type="submit" value="新增" class="btn btn-lg btn-success"/>
+			</div>
+		  </div>
+		</div>
+		</form>
 	</div>
-	<div>
-		<label for="url">栏目地址</label>
-		<input type="text" name="url"/>
-	</div>
-	<input type="submit" value="新增栏目"/>
-</form>
+	
+</div> <!-- /container -->
+<script src="/scripts/jquery-2.1.3.min.js"></script>
+<script src="/scripts/bootstrap.min.js"></script>
+<script>
+	var editor = new Editor();
+	editor.render();
+</script>
 </body>
 </html>
