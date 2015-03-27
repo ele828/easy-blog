@@ -5,32 +5,6 @@ var category = require('../models/category');
 /* blog list controller */
 exports.index = function(req, res, next) {
 
-	// post.createOne({
-	// 	title: '这个一篇文章啊真的',
-	// 	contents: '挺不错的，继续努力啊。加油',
-	// 	url: 'an-article'
-	// },function(err, docs) {
-	// 	console.log(docs);
-	// })
-
-	// post.createOne({
-	// 	title: '分类测试',
-	// 	contents: "就是测试一下效果而已啦222",
-	// 	url: 'test-categories13',
-	// 	category: '55117f868f470222e4978de9',
-	// 	keywords: '测试'
-	// }).then(function(p) {
-	// 	console.log(p)
-	// });
-
-	// category.createOne({
-	// 	name: 'iOS开发',
-	// 	url:  'ios-dev'
-	// }).then(function(c) {
-	// 	console.log(c);
-	// })
-
-
 	post.findAll()
 	.then(function(posts) {
 		console.log(posts);
@@ -39,8 +13,6 @@ exports.index = function(req, res, next) {
 			posts: posts
 		})
 	});
-
-
 
 }
 

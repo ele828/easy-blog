@@ -8,6 +8,10 @@ var router = express.Router();
 /* Admin */
 router.get('/', admin.index);
 router.post('/login', admin.login);
+router.get('/logout', admin.logout);
+
+
+router.get('/panel', admin.panel);
 
 /* Create a post */
 router.get('/post/create', post.showCreatePost);

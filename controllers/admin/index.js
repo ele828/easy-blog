@@ -13,8 +13,30 @@ exports.login = function(req, res, next) {
 	if (username === config.admin.username &&
 		password === config.admin.password) {
 		req.session.logined = true;
-		res.redirect('/admin/post/create');
+		res.redirect('/admin/panel');
 	} else {
 		res.redirect('/admin');
 	}
+}
+
+exports.logout = function(req, res, next) {
+	if(!req.session.logined) {
+		res.redirect('/admin');
+		return;
+	}
+	if(req.session.logined) {
+		req.session.destroy(function() {
+			res.redirect('/blog');
+		});
+	}
+}
+
+exports.panel = function(req, res, next) {
+	if(!req.session.logined) {
+		res.redirect('/admin');
+		return;
+	}
+	res.render('admin/panel', {
+		config: config
+	})
 }
