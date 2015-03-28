@@ -3,15 +3,12 @@ var express = require('express');
 /* import controllers */
 var blog = require('../controllers/blog');
 var post = require('../controllers/post');
+var home = require('../controllers/index');
 
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-	res.render('index', {
-		title: 'Express'
-	});
-});
+router.get('/', home);
 
 /* Blog lists */
 router.get('/blog', blog.index);

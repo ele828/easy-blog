@@ -10,23 +10,75 @@
 	<meta name="keywords" content="<%=post.keywords%>" />
 	<title><%=post.title%> - <%=config.site_name%></title>
 	<link href="/favicon.ico" rel="icon">
-	<link rel="stylesheet" href="/styles/markdown.css">
+	<!-- <link rel="stylesheet" href="/styles/markdown.css"> -->
 	<link rel="stylesheet" href="/libs/code-prettify/prettify.css">
+	<link rel="stylesheet" href="/styles/index.css">
+	<link rel="stylesheet" href="/styles/blog.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="/styles/pace-theme-minimal.css" rel="stylesheet" />
+    <script src="/scripts/pace.min.js"></script>
 </style>
 </head>
 <body>
-<h1>
-	<%=post.title%>
-</h1>
-<span>分类：<%=post.category.name%></span>
-<span>关键字：<%=post.keywords%></span>
-<p>
-	<%=post.date%><br>
-</p>
-<article>
-	<%- post.contents %>
-</article>
-</body>
+<div class="container">
+	<div class="wrapper">
+		<nav class="navbar">
+			<section class="info">
+				<a href="/">
+		        <section class="me">
+		            <img src="/images/me.jpg" alt="Eric">
+		        </section>
+		        </a>
+		        <section class="nav">
+		            <ul>
+                <li>
+                    <a class="btn" href="/blog"><i class="fa fa-home"></i>Blog
+                    <i class="after"></i></a>
+                </li>
+                <span>&nbsp·&nbsp</span>
+                <li>
+                    
+                    <a href="/about"><i class="fa fa-heartbeat"></i>About
+                    <i class="after"></i></a></a>
+                </li>
+                <span>&nbsp·&nbsp</span>
+                <li>
+                    
+                    <a href="http://resume.dobest.me"><i class="fa fa-linkedin-square"></i>Resume
+                    <i class="after"></i></a></a>
+                </li>
+                <span>&nbsp·&nbsp</span>
+                <li>
+                
+                <a href="http://www.github.com/ele828"><i class="fa fa-github"></i>Github
+                <i class="after"></i></a></a>
+                </li>
+                <span>&nbsp·&nbsp</span>
+                <li>
+                    
+                    <a href="http://www.weibo.com/ele828"><i class="fa fa-weibo"></i>Weibo
+                    <i class="after"></i></a></a>
+                </li>
+            </ul>
+		        </section>
+		    </section>
+		</nav>
+		<section class="posts">
+		   	 <h1 class="title">
+				<%=post.title%>
+			</h1>
+			<div class="post_info">
+				<%=post.date%>
+				<%=post.category.name%>
+				<%=post.views%>次阅读,
+				收到<%=post.stars%>个赞
+			</div>
+			<article>
+			<%-post.contents %>
+			</article>
+		</section>
+	</div>
+</div>
 <script src="/scripts/jquery-2.1.3.min.js"></script>
 <script src="/libs/code-prettify/prettify.js"></script>
 <script>
@@ -35,4 +87,14 @@
     prettyPrint();
 })();
 </script>
+<script>
+    $("body").fadeIn(100);
+    $("a").click(function() {
+        $("body").fadeOut(function() {
+            window.location.href = this.href;
+        }.bind(this));
+        return false;
+    });
+</script>
+</body>
 </html>
