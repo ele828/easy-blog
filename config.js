@@ -4,6 +4,6 @@ module.exports = {
 	db: "mongodb://127.0.0.1/easy_blog",
 	admin: {
 		username: 'admin',
-		password: 'huangweiwei'
+		password: 'admin'
 	}
 }
