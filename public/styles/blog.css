@@ -1,6 +1,6 @@
 .wrapper {
 	margin: 0 auto;
-	width: 700px;
+	width: 768px;
 	background: #fff;
 }
 
@@ -14,7 +14,7 @@
 	color: #fff;
 	text-shadow: none;
 	padding: 0;
-	border-bottom:1px solid #ccc;
+	border-bottom:1px dashed #ccc;
 }
 
 .navbar .info {
@@ -58,7 +58,56 @@
 .posts li {
 	border-bottom: 1px dotted #ccc;
 	padding-bottom: 10px;
-	padding-top: 5px;
+	padding-top: 10px;
+	padding-left: 30px;
+	transition: .3s;
+}
+
+.posts li:hover {
+	color: #660292;
+}
+
+.posts li:hover {
+	padding-left: 30px;
+}
+
+.arc {
+	margin-top: -20px;
+}
+
+.star_zone {
+	display: block;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.star_btn {
+	display: inline-block;
+	width: 150px;
+	height:50px;
+	line-height: 45px;
+	background: #fff;
+	border-radius: 30px;
+	border: 1px solid #f29c9f;
+	text-align: center;
+	color: #f29c9f;
+	outline: none;
+	font-size: 20px;
+	transition: .3s;
+	z-index: 1;
+}
+
+.star_btn:hover {
+	cursor: pointer;
+	color: #fff;
+	background: #f29c9f;
+}
+
+.ds-meta {
+	display: none;
 }
 
 @media screen and (min-width: 0) and (max-width: 480px) {
@@ -72,9 +121,12 @@
 		width: 100%;
 	}
 
+	.posts ul {
+		margin-top: -10px;
+	}
+
 	.posts li {
-		padding: 0 10px 0 10px;
-		padding-top:0;
+		padding: 10px 10px 10px 10px;
 		font-size: 16px;
 	}
 

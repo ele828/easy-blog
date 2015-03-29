@@ -16,6 +16,10 @@ exports.index = function(req, res, next) {
 
 }
 
+exports.links = function(req, res, next) {
+	
+}
+
 /* Replace by populate method
 function searchCategoryName(posts) {
 	var deferred = Promise.defer();

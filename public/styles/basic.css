@@ -2,6 +2,21 @@
 	box-sizing: border-box;
 }
 
+::selection {
+    background:#8fc31f; 
+    color:#fff;
+}
+
+::-moz-selection {
+    background:#d3d3d3; 
+    color:#555;
+}
+
+::-webkit-selection {
+    background:#d3d3d3; 
+    color:#555;
+}
+
 body {
 	padding:0;
 	margin:0 auto;
@@ -23,7 +38,7 @@ body {
 
 .container > .info {
 	margin:0 auto;
-	width: 100%;
+	width: 80%;
 	height: 40%;
 	text-shadow: #fff 0 1px 0;
 	padding-top: 11%;
@@ -56,10 +71,9 @@ body {
 	margin-top: 20px;
 }
 
+
 .nav > ul {
 	list-style-type: none;
-	margin-left: -3%;
-	margin-top: -1px;
 }
 
 .nav > ul > li {
@@ -114,6 +128,7 @@ li > span{
 	color: #660292;
 }
 
+
 .posts {
 	margin: 0 auto;
 	width: 100%;
@@ -140,7 +155,7 @@ li > span{
 
 .posts ul li {
 	margin:0;
-	margin-top: 15px;
+	padding: 20px 0 20px 20px;
 }
 
 .title {
@@ -183,15 +198,17 @@ pre.prettyprint{
 
 footer {
 	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
+	padding: 10px 0 10px 0;
+	color: #bbb;
 }
 
 footer a {
-	color: #000;
+	color: #bbb;
 }
 
 footer a:visited {
-	color: #000;
+	color: #bbb;
 }
 
 @media screen and (min-width: 480px) {
@@ -209,6 +226,10 @@ footer a:visited {
 		width: 100%;
 		margin-left: 0;
 		border-bottom: 2px solid #660292;
+	}
+
+	.nav li {
+		width: 85px;
 	}
 }
 
@@ -234,18 +255,28 @@ footer a:visited {
 		font-size: 35px;
 	}
 
-	.nav li {
+	.nav li i{
 		width: 20%;
+		background: red;
+	}
+
+	.nav li i {
+		display: none;
 	}
 
 	.nav a:hover i {
 		width: 18px;
 		opacity: 0;
+		display: none;
 		color: #660292;
 	}
 
 	.nav {
 		margin-bottom: 10px;
+	}
+
+	.navbar li {
+		width:20%;
 	}
 }
 
@@ -277,5 +308,9 @@ footer a:visited {
 
 	.title {
 		font-size: 35px;
+	}
+
+	.navbar li {
+		width:20%;
 	}
 }

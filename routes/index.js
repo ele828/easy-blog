@@ -12,8 +12,10 @@ router.get('/', home);
 
 /* Blog lists */
 router.get('/blog', blog.index);
+router.get('/links', blog.links);
 
 /* Post specific pages */
 router.get('/post/:url', post.index);
+router.post('/post/star', post.star);
 
 module.exports = router;
