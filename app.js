@@ -12,6 +12,8 @@ var routes = require('./routes');
 var adminRoute = require('./routes/admin');
 var ensureLogined = require('./middlewares/ensure_logined');
 
+var config = require('./config');
+
 var app = express();
 
 // connect to Mongodb
@@ -57,6 +59,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
+    config: config,
     message: err.message,
     error: {}
   });

@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta property="og:site_name" content="黄为伟的博客"/>
 	<meta name="keywords" content="<%=config.keywords%>" />
-	<title>博文列表 - <%=config.site_name%></title>
+	<title>友情链接 - <%=config.site_name%></title>
 	<link href="/favicon.ico" rel="icon">
 	<link rel="stylesheet" href="/styles/basic.css">
 	<link rel="stylesheet" href="/styles/blog.css">
@@ -34,7 +34,6 @@
 		                </li>
 		                <span>&nbsp·&nbsp</span>
 		                <li>
-		                    
 		                    <a href="/links"><i class="fa fa-heartbeat"></i>Links
 		                    <i class="after"></i></a></a>
 		                </li>
@@ -60,16 +59,12 @@
 		        </section>
 		    </nav>
 		</section>
-		<section class="posts">
+		<section class="links">
 		    <ul>
-				<% posts.forEach(function(post) {%>
-				<a href="/post/<%=post.url%>/">
-				<li>[<%=post.category.name%>]&nbsp<%=post.title%>
-					<div class="sub"><%=post.date%>
-					&nbsp&nbsp
-					<span>Views:<%=post.views%></span>
-					&nbsp&nbsp
-					<span>Stars:<%=post.stars%></span><div>
+				<% links.forEach(function(link) {%>
+				<a target="_blank" href="<%=link.url%>">
+				<li><%=link.name%>
+					<div class="sub"><%=link.url%><div>
 				</li>
 				</a>
 				<% }); %>
@@ -84,7 +79,7 @@
 <script src="/scripts/jquery-2.1.3.min.js"></script>
 <script>
     $("body").fadeIn(100);
-    $("a").click(function() {
+    $("nav a").click(function() {
         $("body").fadeOut(function() {
             window.location.href = this.href;
         }.bind(this));

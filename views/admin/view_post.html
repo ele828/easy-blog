@@ -24,8 +24,8 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-expanded="false">文章管理 <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="/admin/post/view">文章列表</a></li>
-                  <li><a href="/admin/post/create">发布文章</a></li>
+                  <li><a href="/admin/link/view">文章列表</a></li>
+                  <li><a href="/admin/link/create">发布文章</a></li>
                 </ul>
               </li>
 
@@ -34,6 +34,13 @@
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="/admin/category/view">分类列表</a></li>
                   <li><a href="/admin/category/create">新增分类</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">友链管理 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="/admin/links/view">友链列表</a></li>
+                  <li><a href="/admin/links/create">新增友链</a></li>
                 </ul>
               </li>
               <li><a href="/admin/logout">退出后台</a></li>
@@ -59,14 +66,14 @@
 		        </tr>
 		      </thead>
 		      <tbody>
-				<%posts.forEach(function(post) {%>
+				<%links.forEach(function(link) {%>
 			        <tr>
-			          <td>[<%=post.category.name%>] <a href="/post/<%=post.url%>" target="_blank"><%=post.title%></a></td>
-			          <td><%=post.views%></td>
-			          <td><%=post.stars%></td>
-			          <td><%=post.date%></td>
-			          <td><a href="/admin/post/remove/<%=post._id%>">删除</a></td>
-			          <td><a href="/admin/post/alter/<%=post._id%>">修改</a></td>
+			          <td>[<%=link.category.name%>] <a href="/link/<%=link.url%>" target="_blank"><%=link.title%></a></td>
+			          <td><%=link.views%></td>
+			          <td><%=link.stars%></td>
+			          <td><%=link.date%></td>
+			          <td><a href="/admin/link/remove/<%=link._id%>">删除</a></td>
+			          <td><a href="/admin/link/alter/<%=link._id%>">修改</a></td>
 			        </tr>
 		        <%});%>
 		      </tbody>

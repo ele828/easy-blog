@@ -60,16 +60,16 @@
 		        </section>
 		    </nav>
 		</section>
-		<section class="posts">
+		<section class="posts list">
 		    <ul>
 				<% posts.forEach(function(post) {%>
 				<a href="/post/<%=post.url%>/">
 				<li>[<%=post.category.name%>]&nbsp<%=post.title%>
 					<div class="sub"><%=post.date%>
 					&nbsp&nbsp
-					<span>Views:<%=post.views%></span>
+					<span><i class="fa fa-eye">&nbsp</i><%=post.views%></span>
 					&nbsp&nbsp
-					<span>Stars:<%=post.stars%></span><div>
+					<span><i class="fa fa-heart-o">&nbsp</i><%=post.stars%></span><div>
 				</li>
 				</a>
 				<% }); %>

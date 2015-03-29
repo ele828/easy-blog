@@ -8,13 +8,13 @@
 }
 
 ::-moz-selection {
-    background:#d3d3d3; 
-    color:#555;
+    background:#8fc31f; 
+    color:#fff;
 }
 
 ::-webkit-selection {
-    background:#d3d3d3; 
-    color:#555;
+    background:#8fc31f; 
+    color:#fff;
 }
 
 body {
@@ -58,7 +58,7 @@ body {
 }
 
 .me > img:hover {
-	transform:rotate(-359deg);
+	transform:rotate(-719deg);
 }
 
 .me > h1 {
@@ -131,14 +131,19 @@ li > span{
 
 .posts {
 	margin: 0 auto;
-	width: 100%;
+	max-width: 100%;
 	/*background: red;*/
 	text-align: left;
 	height: 70%;
-	overflow-y:auto;
 	text-align: left;
 	/*font-family: KaiTi, STKaiti;*/
 	font-size: 20px;
+}
+
+.posts p, pre {
+	max-width: 100%;
+	word-wrap:break-word;
+	overflow: hidden;
 }
 
 .posts a {
@@ -194,6 +199,55 @@ pre.prettyprint{
 	 font-family: Arial;
 	 width: 100%;
 	 word-wrap:break-word;
+}
+
+.links {
+	width: 100%;
+}
+
+.links > ul {
+	list-style-type: none;
+	text-align: left;
+}
+
+.links > ul  li {
+	display: block;
+	font-size: 20px;
+	padding-left:0;
+	margin-left:0;
+	padding-top: 10px;
+	margin-right: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px dotted #ccc;
+	margin-left: -30px;
+	padding-left: 30px;
+	transition: .3s;
+}
+
+.links a {
+	font-size: 18px;
+	font-weight: 500;
+	transition: .3s;
+	text-decoration: none;
+	color: #000;
+}
+
+.links li:hover {
+	padding-left: 40px;
+}
+
+.links li:hover {
+	color: #660292;
+}
+
+.links .sub {
+	font-size: 14px;
+}
+
+.p404 {
+	margin-top: 50px;
+	margin-bottom: 30px;
+	font-size: 30px;
 }
 
 footer {
@@ -278,6 +332,9 @@ footer a:visited {
 	.navbar li {
 		width:20%;
 	}
+	.navbar {
+		margin-top: 20px;
+	}
 }
 
 @media screen and (min-width: 0) and (max-width: 320px) {
@@ -312,5 +369,8 @@ footer a:visited {
 
 	.navbar li {
 		width:20%;
+	}
+	.navbar {
+		margin-top: 20px;
 	}
 }

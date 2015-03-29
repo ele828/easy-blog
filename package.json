@@ -16,6 +16,6 @@
     "serve-favicon": "~2.2.0",
     "mongoose": "*",
     "moment ": "*",
-    "markdown": "*"
+    "markdown-it": "*"
   }
 }

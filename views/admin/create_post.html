@@ -27,8 +27,8 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">文章管理 <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="/admin/post/view">文章列表</a></li>
-                  <li><a href="/admin/post/create">发布文章</a></li>
+                  <li><a href="/admin/link/view">文章列表</a></li>
+                  <li><a href="/admin/link/create">发布文章</a></li>
                 </ul>
               </li>
 
@@ -39,6 +39,13 @@
                   <li><a href="/admin/category/create">新增分类</a></li>
                 </ul>
               </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">友链管理 <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="/admin/links/view">友链列表</a></li>
+                  <li><a href="/admin/links/create">新增友链</a></li>
+                </ul>
+              </li>
               <li><a href="/admin/logout">退出后台</a></li>
             </ul>
           </div>
@@ -46,7 +53,7 @@
       </nav>
 	
 	<div class="container" style="margin-top: 80px;">
-		<form method="POST" action="/admin/post/create">
+		<form method="POST" action="/admin/link/create">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
 		    <h3 class="panel-title">发布文章</h3>

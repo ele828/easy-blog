@@ -2,6 +2,7 @@ var express = require('express');
 var admin = require('../controllers/admin');
 var post = require('../controllers/admin/post');
 var category = require('../controllers/admin/category');
+var link = require('../controllers/admin/link');
 
 var router = express.Router();
 
@@ -33,5 +34,11 @@ router.get('/category/remove/:id', category.removeCategory);
 router.get('/category/create', category.showCreateCategory);
 router.post('/category/create', category.createCategory);
 router.post('/category/alter/:id', category.alterCategory);
+
+/* Links Manager */
+router.get('/links/view', link.viewLink);
+router.get('/links/create', link.ShowCreateLink);
+router.post('/link/create', link.createLink);
+router.get('/link/remove/:id', link.removeLink);
 
 module.exports = router;
