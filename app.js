@@ -58,12 +58,12 @@ app.use(function(req, res, next) {
 // error handlers
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  // res.render('error', {
-  //   config: config,
-  //   message: err.message,
-  //   error: {}
-  // });
-res.json(err.message);
+  res.render('error', {
+    config: config,
+    message: err.message,
+    error: {}
+  });
+//res.json(err.message);
 });
 
 
