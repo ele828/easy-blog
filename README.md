@@ -4,7 +4,7 @@ Support dashboard, implements posts, category and links. Write blogs by Markdown
 Node.js + Mongodb(Mongoose), use ``Promise`` to operate Model
 
 
-** Install
+## Install
 Environment required: Node.js 0.12 + MongoDB
 
 1. run ``npm install`` command
@@ -15,7 +15,7 @@ Environment required: Node.js 0.12 + MongoDB
 
 DEMO: http://www.dobest.me/
 
-** 安装
+## 安装
 环境： Node.js 0.12 + Mongodb
 
 1. 运行 ``npm install`` 命令安装依赖
