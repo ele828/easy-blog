@@ -1,25 +1,24 @@
-## A Blog System of www.dobest.me
+A blog system of www.dobest.me
 
-Support dashboard, implements posts, category and links. Write blogs by Markdown
-Node.js + Mongodb(Mongoose), use ``Promise`` to operate Model
+Promise
 
+CSRF
 
-## Install
-Environment required: Node.js 0.12 + MongoDB
+# 架构设计
+## 文章\post
+-----------------
+* 标题\title
+* 正文\contents
+* 分类\category
+* 关键字\keywords(SEO)
+* 日期\date
+* 阅读数\views
+* 点赞数\starts
+* (评论\多说)
+* (评论数\多说获取)
+* 地址\url
 
-1. run ``npm install`` command
-2. alter the config.js to your setteings
-3. ``node bin/www`` to run server
-4. Open ``http://localhost:3000/admin`` to access to dashboard
-5. Create Category and Create Post
-
-DEMO: http://www.dobest.me/
-
-## 安装
-环境： Node.js 0.12 + Mongodb
-
-1. 运行 ``npm install`` 命令安装依赖
-2. 修改config.js文件，设置配置
-3. 运行``node bin/www``，开启服务器
-4. 打开``http://localhost:3000/admin``进入后台
-5. 创建分类，然后发布文章
+## 分类\category
+-----------------
+分类名\name
+地址\url

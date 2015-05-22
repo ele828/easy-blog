@@ -30,7 +30,7 @@ app.engine('.html', require('ejs').__express);
 app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(session({
   resave: true,
   saveUninitialized: true,
@@ -58,11 +58,11 @@ app.use(function(req, res, next) {
 // error handlers
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
-    config: config,
-    message: err.message,
-    error: {}
-  });
+   res.render('error', {
+     config: config,
+     message: err.message,
+     error: {}
+   });
 //res.json(err.message);
 });
 
