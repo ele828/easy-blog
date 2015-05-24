@@ -5,5 +5,10 @@ module.exports = {
 	admin: {
 		username: 'admin',
 		password: 'hww22655698'
-	}
-}
+	},
+    github: {
+        username: 'ele828',
+        password: '',
+        repository: 'dobest.me'
+    }
+};

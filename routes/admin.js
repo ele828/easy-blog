@@ -3,6 +3,7 @@ var admin = require('../controllers/admin');
 var post = require('../controllers/admin/post');
 var category = require('../controllers/admin/category');
 var link = require('../controllers/admin/link');
+var backup = require('../controllers/admin/backup');
 
 var router = express.Router();
 
@@ -40,5 +41,11 @@ router.get('/links/view', link.viewLink);
 router.get('/links/create', link.ShowCreateLink);
 router.post('/link/create', link.createLink);
 router.get('/link/remove/:id', link.removeLink);
+
+/* Backup posts*/
+router.get('/backup/create/post', backup.backAllPosts);
+router.get('/backup/remove/post', backup.deleteAllPosts);
+router.get('/backup/create/github', backup.uploadToGithub);
+router.get('/backup/remove/github', backup.deleteAllFromGithub);
 
 module.exports = router;

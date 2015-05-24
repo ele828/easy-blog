@@ -24,4 +24,4 @@ exports.markdownParser = function(text) {
 	  typographer:  true,        // Enable smartypants and other sweet transforms
 	});
 	return md.render(text);
-}
+};

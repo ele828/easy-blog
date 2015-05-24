@@ -5,25 +5,16 @@ var link = require('../models/link');
 
 /* blog list controller */
 exports.index = function(req, res, next) {
-
 	post.findAll()
-	.then(function(posts) {
-		console.log(posts);
-		res.render('blog', {
-			config: config,
-			posts: posts
-		})
-	});
-
-}
+        .then(function(posts) {
+            res.render('blog', {
+                config: config,
+                posts: posts
+            })
+        });
+};
 
 exports.links = function(req, res, next) {
-	// link.createOne({
-	// 	name: 'test',
-	// 	url: 'dsfa'
-
-	// });
-
 	link.findAll()
 		.then(function(links) {
 				res.render('links', {
@@ -31,7 +22,7 @@ exports.links = function(req, res, next) {
 					links: links
 				});
 		});
-}
+};
 
 /* Replace by populate method
 function searchCategoryName(posts) {

@@ -12,7 +12,7 @@ exports.showCreatePost = function(req, res, next) {
 					categories: categories
 				});
 			});
-}
+};
 
 // Create a new post
 exports.createPost = function(req, res, next) {
@@ -27,16 +27,16 @@ exports.createPost = function(req, res, next) {
 		url: url,
 		category: category,
 		keywords: keywords
-	}).then(function(p) {
-		console.log(p);
-		res.redirect('/admin/post/view');
-	}).catch(function(err) {
-		if (err) {
-			res.redirect('/admin/post/create');
-		}
+	}).
+        then(function(p) {
+	     res.redirect('/admin/post/view');
+	     }).
+            catch(function(err) {
+		        if (err) {
+			    res.redirect('/admin/post/create');
+		    }
 	});
-	// res.json('1')
-}
+};
 
 // Show list of posts
 exports.viewPost = function(req, res, next) {
@@ -47,14 +47,15 @@ exports.viewPost = function(req, res, next) {
 			posts: posts
 		})
 	});
-}
+};
 
 exports.removePost = function(req, res, next) {
-	post.removeById(req.params.id)
-		.then(function() {
-			res.redirect('/admin/post/view');
-		});
-}
+    var id = req.params.id;
+	post.removeById(id).
+            then(function() {
+                res.redirect('/admin/post/view');
+            });
+};
 
 exports.showAlterPost = function(req, res, next) {
 	var id = req.params.id;
@@ -80,7 +81,7 @@ exports.showAlterPost = function(req, res, next) {
 	}
 
 	post.findOneById(id).then(GetCategories).then(Render);
-}
+};
 
 exports.alterPost = function(req, res, next) {
 	var id = req.params.id;
@@ -104,4 +105,4 @@ exports.alterPost = function(req, res, next) {
 			res.redirect('/admin/post/alter/'+id);
 		}
 	});
-}
+};

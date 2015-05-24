@@ -32,7 +32,7 @@ var PostSchema = new Schema({
 	stars: {
 		type: Number,
 		default: 0
-	},
+	}
 });
 
 PostSchema.statics.findOneByUrl = function(url) {
@@ -51,7 +51,7 @@ PostSchema.statics.findOneByUrl = function(url) {
 				}
 			});
 	}.bind(this));
-}
+};
 
 PostSchema.statics.findOneById = function(id) {
 	return new Promise(function(resolve, reject) {
@@ -67,7 +67,7 @@ PostSchema.statics.findOneById = function(id) {
 				resolve(post);
 			});
 	}.bind(this));
-}
+};
 
 PostSchema.statics.findAll = function() {
 	return new Promise(function(resolve, reject) {
@@ -88,7 +88,26 @@ PostSchema.statics.findAll = function() {
 				resolve(posts);
 			});
 	}.bind(this));
-}
+};
+
+PostSchema.statics.findAllWithContents = function() {
+    return new Promise(function(resolve, reject) {
+        this.find({})
+            .sort({
+                "_id": -1
+            })
+            .lean()
+            .populate('category')
+            .exec(function(err, posts) {
+                if (err)
+                    reject(err);
+                for (var i = 0; i < posts.length; i++) {
+                    posts[i].date = tools.formatDate(posts[i].date);
+                }
+                resolve(posts);
+            });
+    }.bind(this));
+};
 
 PostSchema.statics.createOne = function(post) {
 	return new Promise(function(resolve, reject) {
@@ -98,7 +117,7 @@ PostSchema.statics.createOne = function(post) {
 			resolve(p);
 		});
 	}.bind(this));
-}
+};
 
 PostSchema.statics.updateById = function(id, props) {
 	return new Promise(function(resolve, reject) {
@@ -113,7 +132,7 @@ PostSchema.statics.updateById = function(id, props) {
 			resolve(numberAffected);
 		});
 	}.bind(this));
-}
+};
 
 PostSchema.statics.removeById = function(id) {
 	return new Promise(function(resolve, reject) {
@@ -125,7 +144,7 @@ PostSchema.statics.removeById = function(id) {
 			resolve(p);
 		});
 	}.bind(this));
-}
+};
 
 PostSchema.statics.findByCategoryId = function(cid) {
 	return new Promise(function(resolve, reject) {
@@ -139,7 +158,7 @@ PostSchema.statics.findByCategoryId = function(cid) {
 				resolve(post);
 			});
 	}.bind(this));
-}
+};
 
 PostSchema.statics.IncOneViewById = function(id) {
 	return new Promise(function(resolve, reject) {
@@ -150,7 +169,7 @@ PostSchema.statics.IncOneViewById = function(id) {
 			resolve();
 		});
 	}.bind(this));
-}
+};
 
 PostSchema.statics.IncOneStarById = function(id) {
 	return new Promise(function(resolve, reject) {
@@ -161,6 +180,6 @@ PostSchema.statics.IncOneStarById = function(id) {
 			resolve();
 		});
 	}.bind(this));
-}
+};
 
 module.exports = mongoose.model('Post', PostSchema);

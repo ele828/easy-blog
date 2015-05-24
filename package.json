@@ -12,10 +12,12 @@
     "ejs": "~2.3.1",
     "express": "~4.12.2",
     "express-session": "*",
-    "morgan": "~1.5.1",
-    "serve-favicon": "~2.2.0",
-    "mongoose": "*",
+    "github-api": "^0.10.4",
+    "iconv-lite": "^0.4.8",
+    "markdown-it": "*",
     "moment ": "*",
-    "markdown-it": "*"
+    "mongoose": "*",
+    "morgan": "~1.5.1",
+    "serve-favicon": "~2.2.0"
   }
 }
