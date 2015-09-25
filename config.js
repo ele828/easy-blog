@@ -4,7 +4,7 @@ module.exports = {
 	db: "mongodb://127.0.0.1/easy_blog",
 	admin: {
 		username: 'admin',
-		password: 'hww22655698'
+		password: '***'
 	},
     github: {
         username: 'ele828',
