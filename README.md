@@ -1,24 +1,19 @@
-A blog system of www.dobest.me
-
-Promise
-
-CSRF
+A blog system
+Node.js(0.12) + Mongodb
+DEMO: http://www.dobest.me:8080
 
 # 架构设计
-## 文章\post
------------------
-* 标题\title
-* 正文\contents
-* 分类\category
-* 关键字\keywords(SEO)
-* 日期\date
-* 阅读数\views
-* 点赞数\starts
-* (评论\多说)
-* (评论数\多说获取)
-* 地址\url
-
-## 分类\category
------------------
-分类名\name
-地址\url
+* title
+* contents
+* category
+* keywords(SEO)
+* date
+* view count
+* thumb up
+* define readable url
+* category
+* 
+# New Version
+I am developing a new version of blog system
+By Go and React.js
+https://github.com/ele828/higo
