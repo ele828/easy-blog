@@ -4,7 +4,7 @@ Node.js(0.12) + Mongodb
 
 DEMO: http://www.dobest.me:8080
 
-# 架构设计
+## Features
 * title
 * contents
 * category
@@ -15,7 +15,7 @@ DEMO: http://www.dobest.me:8080
 * define readable url
 * category
 
-# New Version
+## New Version
 I am developing a new version of blog system
 
 By Go and React.js
