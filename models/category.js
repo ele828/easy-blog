@@ -16,7 +16,7 @@ CategorySchema.statics.createOne = function(category) {
   return new Promise(function(resolve, reject) {
     this.create(category, function(err, c) {
       if(err)
-        reject(err);
+        return reject(err);
       resolve(c);
     });
   }.bind(this));
@@ -28,7 +28,8 @@ CategorySchema.statics.findById = function(id) {
         _id: id
       })
       .exec(function(err, category) {
-        if (err) reject(err);
+        if (err) 
+          return reject(err);
         resolve(category);
       });
   }.bind(this));
@@ -42,7 +43,7 @@ CategorySchema.statics.findAll = function() {
       })
       .exec(function(err, categories) {
         if(err)
-          reject(err);
+          return reject(err);
         resolve(categories);
       });
 
@@ -53,7 +54,7 @@ CategorySchema.statics.removeById = function(id) {
   return new Promise(function(resolve, reject) {
     this.remove({_id: id}, function(err, c) {
       if (err)
-        reject(err)
+        return reject(err)
       resolve(c);
     });
   }.bind(this));
@@ -63,7 +64,7 @@ CategorySchema.statics.updateById = function(id, props) {
   return new Promise(function(resolve, reject) {
     this.update({ _id: id }, { $set: props}).exec(function(err, numberAffected, raw) {
       if(err) {
-        reject(err);
+        return reject(err);
       }
       resolve(numberAffected);
     });

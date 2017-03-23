@@ -16,7 +16,7 @@ LinkSchema.statics.createOne = function(link) {
   return new Promise(function(resolve, reject) {
     this.create(link, function(err, l) {
       if(err)
-        reject(err);
+        return reject(err);
       resolve(l);
     });
   }.bind(this));
@@ -31,7 +31,7 @@ LinkSchema.statics.findAll = function() {
       })
       .exec(function(err, links) {
         if(err)
-          reject(err);
+          return reject(err);
         resolve(links);
       });
 
@@ -42,7 +42,7 @@ LinkSchema.statics.removeById = function(id) {
   return new Promise(function(resolve, reject) {
     this.remove({_id: id}, function(err, c) {
       if (err)
-        reject(err)
+        return reject(err)
       resolve(c);
     });
   }.bind(this));

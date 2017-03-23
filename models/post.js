@@ -44,7 +44,7 @@ PostSchema.statics.findOneByUrl = function(url) {
 			.populate('category')
 			.exec(function(err, post) {
 				if (err || post == null) {
-					reject(err);
+					return reject(err);
 				} else {
 					post.date = tools.formatDate(post.date);
 					resolve(post);
@@ -62,7 +62,7 @@ PostSchema.statics.findOneById = function(id) {
 			.populate('category')
 			.exec(function(err, post) {
 				if (err)
-					reject(err);
+					return reject(err);
 				post.date = tools.formatDate(post.date);
 				resolve(post);
 			});
@@ -81,7 +81,7 @@ PostSchema.statics.findAll = function() {
 			.populate('category')
 			.exec(function(err, posts) {
 				if (err)
-					reject(err);
+					return reject(err);
 				for (var i = 0; i < posts.length; i++) {
 					posts[i].date = tools.formatDate(posts[i].date);
 				}
@@ -100,7 +100,7 @@ PostSchema.statics.findAllWithContents = function() {
             .populate('category')
             .exec(function(err, posts) {
                 if (err)
-                    reject(err);
+                    return reject(err);
                 for (var i = 0; i < posts.length; i++) {
                     posts[i].date = tools.formatDate(posts[i].date);
                 }
@@ -113,7 +113,7 @@ PostSchema.statics.createOne = function(post) {
 	return new Promise(function(resolve, reject) {
 		this.create(post, function(err, p) {
 			if (err)
-				reject(err)
+				return reject(err)
 			resolve(p);
 		});
 	}.bind(this));
@@ -127,7 +127,7 @@ PostSchema.statics.updateById = function(id, props) {
 			$set: props
 		}).exec(function(err, numberAffected, raw) {
 			if (err) {
-				reject(err);
+				return reject(err);
 			}
 			resolve(numberAffected);
 		});
@@ -140,7 +140,7 @@ PostSchema.statics.removeById = function(id) {
 			_id: id
 		}, function(err, p) {
 			if (err)
-				reject(err)
+				return reject(err)
 			resolve(p);
 		});
 	}.bind(this));
@@ -154,7 +154,7 @@ PostSchema.statics.findByCategoryId = function(cid) {
 			.lean()
 			.exec(function(err, post) {
 				if (err)
-					reject(err);
+					return reject(err);
 				resolve(post);
 			});
 	}.bind(this));
@@ -164,7 +164,7 @@ PostSchema.statics.IncOneViewById = function(id) {
 	return new Promise(function(resolve, reject) {
 		this.findByIdAndUpdate(id, { $inc: { views: 1 }}, function(err) {
 			if(err) {
-				reject(err);
+				return reject(err);
 			}
 			resolve();
 		});
@@ -175,7 +175,7 @@ PostSchema.statics.IncOneStarById = function(id) {
 	return new Promise(function(resolve, reject) {
 		this.findByIdAndUpdate(id, { $inc: { stars: 1 }}, function(err) {
 			if(err) {
-				reject(err);
+				return reject(err);
 			}
 			resolve();
 		});
